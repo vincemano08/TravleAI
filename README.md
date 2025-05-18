@@ -1,11 +1,11 @@
 # Travel Planner AI Projekt Dokumentáció
 
-Tisztában vagyok vele, hogy az eredetileg leadott feladatok közül egy olyan témát választottam, amely egy adott régió vagy ország alapján végez kiberbiztonsági fenyegetettség-elemzést (Kiberbiztonsági fenyegetettség-elemző IP-cím/ország alapján). Azonban a megvalósítás során nem találtam olyan ingyenesen és szabadon elérhető API-t, amely lehetővé tette volna ennek megvalósítását, ezért a projekt témáját megváltoztattam.
+*  Tisztában vagyok vele, hogy az eredetileg leadott feladatok közül egy olyan témát választottam, amely egy adott régió vagy ország alapján végez kiberbiztonsági fenyegetettség-elemzést (Kiberbiztonsági fenyegetettség-elemző IP-cím/ország alapján). Azonban a megvalósítás során nem találtam olyan ingyenesen és szabadon elérhető API-t, amely lehetővé tette volna ennek megvalósítását, ezért a projekt témáját megváltoztattam.
 
-Az új alkalmazás lényege, hogy a felhasználó megad egy úti célt (és opcionálisan egy képet), és az AI ennek alapján megtervez számára egy utazást. Az utazási terveket az alkalmazás el tudja menteni, valamint egy külön fülön lehetőséget biztosít repülőjáratok keresésére(pl. a kiválasztott úti célhoz).
-**Fun fact:** a járatkeresésnél elegendő a város nevét megadni, mivel a Google Gemini API automatikusan felismeri a városnevet, és előállítja belőle az IATA-kódot, amelyet az API a lekérdezésekhez használni tud.
+*  Az új alkalmazás lényege, hogy a felhasználó megad egy úti célt (és opcionálisan egy képet), és az AI ennek alapján megtervez számára egy utazást. Az utazási terveket az alkalmazás el tudja menteni, valamint egy külön fülön lehetőséget biztosít repülőjáratok keresésére(pl. a kiválasztott úti célhoz).
+*  **Fun fact:** a járatkeresésnél elegendő a város nevét megadni, mivel a Google Gemini API automatikusan felismeri a városnevet, és előállítja belőle az IATA-kódot, amelyet az API a lekérdezésekhez használni tud.
 
-A nevem Gyulavári Vince (NEPTUN: PIDMKX). A feladat kidolgozását a múlt hétvégén kezdtem el, jelenleg körülbelül 13–15 óra fejlesztési munka van benne. Az alkalmazás főbb funkciói és lényegi részei már működnek, azonban a leadás időpontjában a bejelentkezési rendszer még nem üzemel – ezt igyekszem minél hamarabb javítani.
+*  A nevem **Gyulavári Vince** (NEPTUN: PIDMKX). A feladat kidolgozását a múlt hétvégén kezdtem el, jelenleg körülbelül 13–15 óra fejlesztési munka van benne. Az alkalmazás főbb funkciói és lényegi részei már működnek, azonban a leadás időpontjában a bejelentkezési rendszer még nem üzemel – ezt igyekszem minél hamarabb javítani. (EDIT: az auth már működik, de a confirmation email a localhost:3000-re redirectál, mivel nincsen valós weboldalam, de ez nem probléma, mert a regisztrációhoz nem szükséges az email konfirmálás. Regisztráció után be lehet lépni a Sign In gombbal.)
 
 ## 🛠️ Tech Stack amit használok
 
