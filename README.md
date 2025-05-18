@@ -24,11 +24,13 @@
 *   A legnagyobb kihívást a Supabase megfelelő beállítása, valamint a megfelelő repülőjárat-kereső API megtalálása jelentette. A legtöbb ilyen API (pl. Kiwi.com) affiliate rendszerhez kötött, amelyhez külön jelentkezni kellett volna.
 
 ## Utolsó megjegyzések
-*   Nem szerettem volna az apk-t feltölteni a GitHub repoba, mivel nem tudom, mennyire akarják mások extractálni az API kulcsaimat, de itt van egy link egy Google Forms-ra ahol, ha beírod a jelszót <details>
+*   Nem szerettem volna az apk-t feltölteni a GitHub repoba, mivel nem tudom, mennyire akarják mások extractálni az API kulcsaimat, de itt van egy link egy Google Forms-ra ahol, ha beírod a jelszót 
+<details>
   <summary>Kattints a jelszóért</summary>
   A jelszó (példaként): `A5SLd15hAbvNa'"S123"A%`.
-</details>: [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSd5mX2WFwoZIHpa6DsWZkXqG9H-7LG4YvOx2I0qxogjZOUbDA/viewform?usp=header)
+</details> :[Google Forms](https://docs.google.com/forms/d/e 1FAIpQLSd5mX2WFwoZIHpa6DsWZkXqG9H-7LG4YvOx2I0qxogjZOUbDA/viewform?usp=header)
 
+<br><br><br><br><br><br><br>
 
 Ehhez a dokumentációhoz itt a prompt:
 Fogalmazd meg ezt szepen:
