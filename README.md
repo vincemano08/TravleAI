@@ -24,7 +24,7 @@
 *   A legnagyobb kihívást a Supabase megfelelő beállítása, valamint a megfelelő repülőjárat-kereső API megtalálása jelentette. A legtöbb ilyen API (pl. Kiwi.com) affiliate rendszerhez kötött, amelyhez külön jelentkezni kellett volna.
 
 
-Ehhez a dokumentációra itt a prompt:
+Ehhez a dokumentációhoz itt a prompt:
 Fogalmazd meg ezt szepen:
 Tudom, hogy a leadott feladatoknal egy olyan feladatot valasztottam, ami regio/orszag alapjan analizalja a kiberbiztonsagi fenyegetettseget(Kiberbiztonsági fenyegetettség-elemző IP-cím/ország alapján). De ehhez nem talaltam megfelelo, elerheto API-t amiert ne kellett volna fizetni, ezert uj feladatot valasztottam. Az uj app lenyege, hogy a felhasznalo bead egy uticelt(es akar egy kepet) es az AI tervez neki egy utazast, az alapjan. Ezeket kepes elmenteni es kepes meg az adott helyre egy masik fulon flightokat lekerni. (Fun fact: A jarat keresesnel eleg a varos nevet beadni, mert azt Gemini oldja meg, hogy abbol IATA code legyen amit az API fel tud hasznalni) A nevem gyulavári Vince. A feladat megoldasat mult het hetvegen kezdtem el megoldani, korulbelul 13-15 ora munka van benne. A nagy resze es a lenyeges resze az appnak mukodik, de a leadas idopontjaban a bejelentkezes nem mukodik, ezt megprobalom fixalni. Az API-ok amiket hasznalok az a Google Gemini API, a Supabase-t a user authra (sign in/up), SerpAPI-nak a google flightsos reszet. Legnehezebb resz valoszinuleg a supabase setup volt es a megfelelo repulojarattalalo api megtalalasa. A legtobb ilyen API, pl a kiwi-jé is affiliate program volt, amire jelentkezni kellett volna kulon. Tech stack amit hasznalok:
 Tech Stack
