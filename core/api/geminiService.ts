@@ -23,7 +23,7 @@ const generationConfig = {
   temperature: 0.9, 
   topK: 1,          
   topP: 1,          
-  maxOutputTokens: 2048, 
+  maxOutputTokens: 8192, 
 };
 
 const safetySettings = [
@@ -73,22 +73,13 @@ export async function generateMultimodalContent(promptParts: Part[]): Promise<st
   try {
     console.log("[GeminiService] Calling model.generateContent...");
 
-    const apiCallPromise = model.generateContent({ 
+    const result = await model.generateContent({ 
       contents: [{ role: 'user', parts: promptParts }],
       generationConfig,
       safetySettings,
     });
-
-    const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error('API call timed out after 30 seconds')), 30000)
-    );
     
-    // Race the API call against the timeout
-    // Cast to `any` temporarily for the result of Promise.race if types are complex,
-    // or be more specific if the expected result type from model.generateContent is known and simple.
-    const result: any = await Promise.race([apiCallPromise, timeoutPromise]);
-    
-    // If we reach here, the apiCallPromise completed before the timeout
+    // If we reach here, the apiCallPromise completed
     console.log("[GeminiService] Got response from model");
 
     // Validate the structure of 'result' and 'result.response'

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, StyleSheet, FlatList, Alert } from 'react-native';
-import { Text, Card, Title, Paragraph, Button, IconButton, ActivityIndicator } from 'react-native-paper';
+import { Text, Card, Title, Paragraph, Button, IconButton, ActivityIndicator, Avatar, Icon } from 'react-native-paper';
 import * as SecureStore from 'expo-secure-store';
 import { Link } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
@@ -72,20 +72,17 @@ export default function SavedTripsScreen() {
       <Card style={styles.card} onPress={() => { /* Navigation handled by Link */ }}>
         <Card.Content>
           <View style={styles.cardHeaderContainer}>
-            <Title style={styles.cardTitle}>{item.tripTitle}</Title>
+            <View style={styles.cardTitleContainer}> 
+                <Title style={styles.cardTitle} numberOfLines={2}>{item.tripTitle}</Title>
+                <Paragraph style={styles.cardSubtitle}>Saved: {new Date(item.savedAt).toLocaleDateString()}</Paragraph>
+            </View>
             <IconButton
               icon="delete-outline"
               size={24}
               onPress={() => handleDeleteTrip(item.id)}
-              // Consider adding accessibilityLabel="Delete trip"
             />
           </View>
-          <Paragraph>Duration: {item.duration || 'N/A'}</Paragraph>
-          <Paragraph>Saved: {new Date(item.savedAt).toLocaleDateString()}</Paragraph>
-          {/* You can add a Link here to a detailed view if you create one later */}
-          {/* <Link href={`/(tabs)/saved-trips/${item.id}`} asChild>
-            <Button mode="outlined" style={{marginTop: 10}}>View Details</Button>
-          </Link> */}
+          <Paragraph style={styles.cardDetails}>Duration: {item.duration || 'N/A'}</Paragraph>
         </Card.Content>
       </Card>
     </Link>
@@ -137,16 +134,28 @@ const styles = StyleSheet.create({
   },
   card: {
     marginVertical: 8,
-    marginHorizontal: 5, // Adjusted for potentially wider content
+    marginHorizontal: 5, 
   },
   cardHeaderContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  cardTitleContainer: { 
+    flex: 1, 
+    justifyContent: 'center',
+  },
   cardTitle: {
-    flex: 1, // Allow title to take up space before icon
-    marginRight: 8, // Space between title and icon
+    flex: 0, // Adjusted to not flex when inside cardTitleContainer
+    fontSize: 18, // Slightly adjusted for better fit with subtitle
+    lineHeight: 22, // Ensure consistent line height for numberOfLines
+  },
+  cardSubtitle: { // Style for the saved date subtitle
+    fontSize: 12,
+    color: '#666',
+  },
+  cardDetails: { // Style for the duration paragraph
+    marginTop: 8,
   },
   info: {
     textAlign: 'center',

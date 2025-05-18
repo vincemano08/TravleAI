@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, Alert } from 'react-native';
-import { Text, Card, Title, Paragraph, Subheading, Divider, List, Chip, ActivityIndicator, Appbar } from 'react-native-paper';
+import { Text, Card, Title, Paragraph, Subheading, Divider, List, ActivityIndicator, Appbar, Icon } from 'react-native-paper';
 import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import { SavedTrip, GettingAroundDetails, DailyPlan, Activity } from '../../../types/itinerary';
@@ -58,18 +58,30 @@ export default function SavedTripDetailScreen() {
     if (!content || (Array.isArray(content) && content.length === 0)) return null;
 
     let displayContent;
+    const accordionIcon = getIconForTitle(title);
+    const chipItemIconName = getChipIconName(title); // Get the icon name (string)
+
     if (typeof content === 'string') {
       displayContent = <Paragraph style={styles.paragraphContent}>{content}</Paragraph>;
     } else if (Array.isArray(content)) {
       displayContent = (
         <View style={styles.chipContainerInAccordion}>
-          {content.map((item, index) => <Chip key={index} style={styles.chip} icon="information-outline">{item}</Chip>)}
+          {content.map((item, index) => (
+            <View key={index} style={styles.customChip}>
+              {chipItemIconName && (
+                <Icon
+                  source={chipItemIconName}
+                  size={18} // Adjust size as desired for the icon in the chip
+                />
+              )}
+              <Text style={styles.customChipText}>{item}</Text>
+            </View>
+          ))}
         </View>
       );
     } else if (typeof content === 'object') { // For GettingAroundDetails
         displayContent = Object.entries(content).map(([key, value]) => {
             if (!value) return null;
-            // Capitalize key and add space before capitals for better readability
             const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
             return <List.Item key={key} title={`${formattedKey}:`} description={value} descriptionNumberOfLines={5} titleStyle={styles.listItemTitle}/>;
         });
@@ -77,12 +89,12 @@ export default function SavedTripDetailScreen() {
 
     if (accordionId) {
         return (
-            <List.Accordion 
-                title={title} 
-                id={accordionId} 
-                expanded={expandedAccordions[accordionId]} 
+            <List.Accordion
+                title={title}
+                id={accordionId}
+                expanded={expandedAccordions[accordionId]}
                 onPress={() => handleAccordionPress(accordionId)}
-                left={props => <List.Icon {...props} icon={getIconForTitle(title)} />}
+                left={props => <List.Icon {...props} icon={accordionIcon} />}
             >
                 {displayContent}
             </List.Accordion>
@@ -109,6 +121,18 @@ export default function SavedTripDetailScreen() {
     if (title.includes("Advice")) return "lightbulb-on-outline";
     if (title.includes("Adjustments")) return "shuffle-variant";
     return "information-outline"; 
+  };
+
+  // Helper to get simpler, more reliable icons specifically for Chips
+  const getChipIconName = (title: string) => {
+    if (title.includes("Documents")) return "file"; // Simpler version
+    if (title.includes("Around")) return "train";    // Simpler version
+    if (title.includes("Accommodation")) return "bed";   // Simpler version
+    if (title.includes("Food")) return "food";        // Simpler version
+    if (title.includes("Note")) return "clipboard-text"; // Simpler, often available
+    if (title.includes("Advice")) return "lightbulb"; // Simpler version
+    if (title.includes("Adjustments")) return "cog"; // Simpler (cogs for settings/adjustments)
+    return "information"; // Simpler version
   };
 
 
@@ -222,22 +246,34 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     marginBottom: 10,
   },
-  chipContainerInAccordion: {
+  chipContainerInAccordion: { // This container holds our custom chips
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingVertical: 8,
-    paddingHorizontal: 16, // Standard padding for accordion content
+    alignItems: 'flex-start', // Align items to the start if they wrap to new lines
   },
-  chip: {
-    margin: 4,
-    backgroundColor: '#e0e0e0'
+  customChip: {
+    flexDirection: 'row',    // Align icon and text horizontally
+    alignItems: 'center',    // Vertically center icon with the text block
+    backgroundColor: '#e0e0e0', // Chip background color
+    borderRadius: 16,        // Rounded corners for chip look
+    paddingVertical: 8,      // Vertical padding inside the chip
+    paddingHorizontal: 12,   // Horizontal padding inside the chip
+    margin: 4,               // Margin around each chip
+  },
+  customChipText: {
+    fontSize: 13,
+    lineHeight: 18,          // Line height for readability
+    color: 'rgba(0,0,0,0.87)', // Default text color, adjust as needed
+    flexShrink: 1, 
+    marginLeft: 6, // Added marginLeft to create space from icon
   },
   listItemTitle: {
     fontWeight: 'bold',
   },
   dayCard: {
     marginVertical: 8,
-    marginHorizontal: 0, // Accordion content has padding
+    marginHorizontal: 0,
     elevation: 1,
     borderWidth: 1,
     borderColor: '#eee',
@@ -248,6 +284,6 @@ const styles = StyleSheet.create({
   },
   activityItem: {
     paddingVertical: 2,
-    paddingLeft: 0, // Icons handle left spacing
+    paddingLeft: 0,
   },
-}); 
+});

@@ -8,6 +8,7 @@ export default function SignUpScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { signUpWithEmail } = useAuth();
@@ -19,10 +20,15 @@ export default function SignUpScreen() {
       Alert.alert('Sign Up Failed', 'Passwords do not match.');
       return;
     }
+    if (!username.trim()) {
+      setError('Username is required.');
+      Alert.alert('Sign Up Failed', 'Username is required.');
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
-      const { data, error: signUpError } = await signUpWithEmail(email, password);
+      const { data, error: signUpError } = await signUpWithEmail(email, password, username);
       if (signUpError) {
         setError(signUpError.message);
         Alert.alert('Sign Up Failed', signUpError.message);
@@ -53,6 +59,15 @@ export default function SignUpScreen() {
     <View style={styles.container}>
       <Text variant="headlineMedium" style={styles.title}>Create Account</Text>
       
+      <TextInput
+        label="Username"
+        value={username}
+        onChangeText={setUsername}
+        autoCapitalize="none"
+        style={styles.input}
+        mode="outlined"
+      />
+
       <TextInput
         label="Email"
         value={email}
