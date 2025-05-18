@@ -10,22 +10,42 @@
     "deploy": "npx expo export -p web && npx eas-cli@latest deploy"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@react-native-async-storage/async-storage": "2.1.2",
+    "@supabase/supabase-js": "^2.49.4",
+    "events": "^3.3.0",
     "expo": "^53.0.4",
     "expo-constants": "~17.1.4",
+    "expo-file-system": "~18.1.9",
+    "expo-image-picker": "~16.1.4",
     "expo-linking": "~7.1.4",
     "expo-router": "~5.0.3",
+    "expo-secure-store": "^14.2.3",
     "expo-splash-screen": "~0.30.7",
     "expo-status-bar": "~2.2.3",
+    "pako": "^2.1.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.1",
+    "react-native-crypto": "^2.2.0",
     "react-native-gesture-handler": "~2.24.0",
+    "react-native-get-random-values": "^1.11.0",
+    "react-native-modal-datetime-picker": "^18.0.0",
+    "react-native-paper": "^5.14.1",
     "react-native-safe-area-context": "5.3.0",
     "react-native-screens": "~4.10.0",
-    "react-native-web": "^0.20.0"
+    "react-native-url-polyfill": "^2.0.0",
+    "react-native-web": "^0.20.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@types/react": "^19.1.3",
+    "@types/react-native": "^0.72.8",
+    "@types/uuid": "^10.0.0",
+    "typescript": "^5.8.3"
   },
   "private": true
 }

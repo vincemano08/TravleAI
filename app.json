@@ -2,7 +2,14 @@
   "expo": {
     "scheme": "acme",
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos to select inspiration images for your trip.",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to use your camera to take photos for trip inspiration."
+        }
+      ]
     ],
     "name": "TravleAI",
     "slug": "TravleAI"
