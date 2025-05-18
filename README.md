@@ -25,9 +25,9 @@
 
 ## Utolsó megjegyzések
 *   Nem szerettem volna az apk-t feltölteni a GitHub repoba, mivel nem tudom, mennyire akarják mások extractálni az API kulcsaimat, de itt van egy link egy Google Forms-ra ahol, ha beírod a jelszót <details>
-  <summary>Click to reveal secret</summary>
-  For example, the secret password is: `A5SLd15hAbvNa'"S123"A%`.
-</details>: [Google Forms](https://forms.gle/2v7Z5a3x4g1Y6k8y7)
+  <summary>Kattints a jelszóért</summary>
+  A jelszó (példaként): `A5SLd15hAbvNa'"S123"A%`.
+</details>: [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSd5mX2WFwoZIHpa6DsWZkXqG9H-7LG4YvOx2I0qxogjZOUbDA/viewform?usp=header)
 
 
 Ehhez a dokumentációhoz itt a prompt:
