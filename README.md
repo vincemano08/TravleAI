@@ -28,7 +28,8 @@
 <details>
   <summary>Kattints a jelszóért</summary>
   A jelszó (példaként): `A5SLd15hAbvNa'"S123"A%`.
-</details> :[Google Forms](https://docs.google.com/forms/d/e 1FAIpQLSd5mX2WFwoZIHpa6DsWZkXqG9H-7LG4YvOx2I0qxogjZOUbDA/viewform?usp=header)
+</details> 
+[Google Forms link](https://docs.google.com/forms/d/e/1FAIpQLSfnq0v2g7Xk3j4m5r6x8z9J5Z5G5G5G5G5G5G5G5G/viewform?usp=sf_link).
 
 <br><br><br><br><br><br><br>
 
