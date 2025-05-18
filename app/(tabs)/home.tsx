@@ -14,7 +14,7 @@ import { ParsedItinerary, DailyPlan, Activity, GettingAroundDetails, SavedTrip }
 const SAVED_TRIPS_KEY = 'saved_travel_trips';
 
 export default function HomeScreen() {
-  const { user, signOut, loading: authLoading } = useAuth();
+  const { user, profile, signOut, loading: authLoading } = useAuth();
   const router = useRouter();
   const [destination, setDestination] = useState('');
   const [isPlanning, setIsPlanning] = useState(false);
@@ -365,7 +365,7 @@ ${jsonStructurePrompt}`;
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.headerContainer}>
-          <Text variant="headlineMedium">Welcome, {user?.email ? user.email.split('@')[0] : 'Traveler'}!</Text>
+          <Text variant="headlineMedium">Welcome, {profile?.username ? profile.username : (user?.email ? user.email.split('@')[0] : 'Traveler')}!</Text>
           <Button 
             icon="logout"
             mode="text" 
