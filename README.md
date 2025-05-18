@@ -23,6 +23,12 @@
 *   A Google AI API válaszideje sajnos meglehetősen lassú; előfordul, hogy akár egy percet is várni kell egy válaszra – ezen sajnos nem tudtam javítani.
 *   A legnagyobb kihívást a Supabase megfelelő beállítása, valamint a megfelelő repülőjárat-kereső API megtalálása jelentette. A legtöbb ilyen API (pl. Kiwi.com) affiliate rendszerhez kötött, amelyhez külön jelentkezni kellett volna.
 
+## Utolsó megjegyzések
+*   Nem szerettem volna az apk-t feltölteni a GitHub repoba, mivel nem tudom, mennyire akarják mások extractálni az API kulcsaimat, de itt van egy link egy Google Forms-ra ahol, ha beírod a jelszót <details>
+  <summary>Click to reveal secret</summary>
+  For example, the secret password is: `A5SLd15hAbvNa'"S123"A%`.
+</details>: [Google Forms](https://forms.gle/2v7Z5a3x4g1Y6k8y7)
+
 
 Ehhez a dokumentációhoz itt a prompt:
 Fogalmazd meg ezt szepen:

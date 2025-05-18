@@ -12,6 +12,15 @@
       ]
     ],
     "name": "TravleAI",
-    "slug": "TravleAI"
+    "slug": "TravleAI",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "133d4718-2e02-47f5-b7cb-52ab98efa3bd"
+      }
+    },
+    "android": {
+      "package": "com.kupakulm.TravleAI"
+    }
   }
 }
