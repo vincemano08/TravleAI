@@ -1,11 +1,11 @@
 import { Alert } from 'react-native';
-import { FlightSearchParams, SerpApiFlightsResponse, FlightOffer } from '../../types/flights';
+import { FlightSearchParams, SerpApiFlightsResponse } from '../../types/flights';
 
 const SERPAPI_BASE_URL = 'https://serpapi.com/search';
 const serpApiKey = process.env.EXPO_PUBLIC_SERPAPI_API_KEY;
 
 if (!serpApiKey) {
-  console.error("SerpApi API Key is not set. Please update it in .env file (EXPO_PUBLIC_SERPAPI_API_KEY).");
+  console.error("SerpApi API Key is not set. Please check your .env file (for local dev) or EAS secrets (for builds).");
 }
 
 // This function now fetches flights for a single, specific set of parameters
@@ -13,36 +13,35 @@ async function fetchSingleFlightSearch(
   params: FlightSearchParams
 ): Promise<SerpApiFlightsResponse | null> {
   if (!serpApiKey) {
-    console.error("SerpApi API Key is not set.");
-    Alert.alert("API Key Error", "Flights API Key is missing. Flight search will not work.");
-    return null; 
+
+    console.error("SerpApi API Key is not available at runtime.");
+    Alert.alert("API Key Error", "Flights API Key is missing. Flight search will not work. Please contact support if this is a production build.");
+    return null;
   }
 
   const queryParamsObj: Record<string, string | undefined> = {
     engine: 'google_flights',
-    api_key: serpApiKey,
+    api_key: serpApiKey, // The key is used here
     hl: params.hl || "en",
     gl: params.gl || "us",
     departure_id: params.departure_id,
     arrival_id: params.arrival_id,
     outbound_date: params.outbound_date,
-    // return_date is only added if it's a round trip and the date is provided
     return_date: params.type === '1' && params.return_date ? params.return_date : undefined,
     adults: (params.adults || 1).toString(),
     children: (params.children || 0).toString(),
     travel_class: (params.travel_class || '1').toString(),
     currency: params.currency || "HUF",
-    type: params.type, // '1' for Round trip, '2' for One-way
-    sort_by: "2", // Sort by price
-    stops: params.stops, // '0' for Any, '1' for Nonstop (direct only)
+    type: params.type,
+    sort_by: "2",
+    stops: params.stops,
   };
 
-  // Remove undefined keys to prevent them from being added as empty query params
   Object.keys(queryParamsObj).forEach(key => queryParamsObj[key] === undefined && delete queryParamsObj[key]);
 
   const queryParams = new URLSearchParams(queryParamsObj as Record<string, string>).toString();
   const searchUrl = `${SERPAPI_BASE_URL}?${queryParams}`;
-  console.log('[SerpApiFlightsService] Requesting flights:', searchUrl);
+  console.log('[SerpApiFlightsService] Requesting flights:', searchUrl); // Be mindful of logging URLs with API keys in production logs
 
   try {
     const response = await fetch(searchUrl);
@@ -59,7 +58,6 @@ async function fetchSingleFlightSearch(
     if (data.error) {
       console.error('[SerpApiFlightsService] API returned an error:', data.error);
       Alert.alert("API Error", `Flight search API returned an error: ${data.error}`);
-      // Return data even if there's an error string, as it might contain partial info or search_metadata
     }
     return data;
   } catch (error) {
@@ -71,8 +69,7 @@ async function fetchSingleFlightSearch(
 
 export async function searchFlights(params: FlightSearchParams): Promise<SerpApiFlightsResponse | null> {
   if (!serpApiKey) {
-    // This check is a bit redundant as fetchSingleFlightSearch also checks, but good for early exit.
-    Alert.alert("API Key Missing", "The API key for flight searches is not configured.");
+    Alert.alert("API Key Missing", "The API key for flight searches is not configured. Please contact support.");
     return null;
   }
 
@@ -98,27 +95,19 @@ export async function searchFlights(params: FlightSearchParams): Promise<SerpApi
   const result = await fetchSingleFlightSearch(params);
 
   if (result && (result.best_flights?.length || result.other_flights?.length)) {
-    // Combine best_flights and other_flights from the single call
     const allFlights = [...(result.best_flights || []), ...(result.other_flights || [])];
-    
-    // Optional: Deduplicate if necessary, though a single API call is less likely to have duplicates
     const uniqueOffers = Array.from(new Map(allFlights.map(offer => [JSON.stringify(offer.flights) + offer.price, offer])).values());
     uniqueOffers.sort((a, b) => a.price - b.price);
 
     return {
-        ...result, // Keep other fields like search_metadata, price_insights if present
-        best_flights: uniqueOffers, // API usually returns best_flights sorted, but we ensure our combined list is
-        other_flights: [] // We've combined them into best_flights
+        ...result,
+        best_flights: uniqueOffers,
+        other_flights: []
     };
   } else if (result && !result.error) {
-    // Result exists, no error message from API, but no flights found
     Alert.alert("No Flights Found", "No flights were found matching your criteria.");
-    return result; // Return the result which might have metadata but no flights
-  } else if (!result && !params.currency) {
-    // If result is null (likely due to API key error or network error handled in fetchSingleFlightSearch)
-    // and no alert has been shown by fetchSingleFlightSearch specifically for currency issue
-    // This specific path may not be hit if fetchSingleFlightSearch alerts first.
+    return result;
   }
-  
-  return result; // Return null or result with error message
-} 
+  // If result is null, an error alert would have been shown by fetchSingleFlightSearch
+  return result;
+}

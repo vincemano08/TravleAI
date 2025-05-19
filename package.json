@@ -13,9 +13,11 @@
     "@google/generative-ai": "^0.24.1",
     "@react-native-async-storage/async-storage": "2.1.2",
     "@supabase/supabase-js": "^2.49.4",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "events": "^3.3.0",
     "expo": "^53.0.4",
     "expo-constants": "~17.1.4",
+    "expo-dev-client": "~5.1.8",
     "expo-file-system": "~18.1.9",
     "expo-image-picker": "~16.1.4",
     "expo-linking": "~7.1.4",
@@ -38,8 +40,7 @@
     "react-native-web": "^0.20.0",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
-    "uuid": "^11.1.0",
-    "expo-dev-client": "~5.1.8"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
