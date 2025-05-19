@@ -25,6 +25,7 @@
 
 ## Utolsó megjegyzések
 *   Nem szerettem volna az apk-t feltölteni a GitHub repoba, mivel nem tudom, mennyire akarják mások extractálni az API kulcsaimat, de itt van egy link egy Google Forms-ra ahol, ha beírod a jelszót 
+(Jelenleg a buildelt apk (a driveban) még nem működik, de megpróbálom majd fixálni.)
 <details>
   <summary>Kattints a jelszóért</summary>
   A jelszó a formsban: A5SLd15hAbvNa'"S123"A%
@@ -32,7 +33,7 @@
 
 [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSfnq0v2g7Xk3j4m5r6x8z9J5Z5G5G5G5G5G5G5G5G/viewform?usp=sf_link). 
 
-Jelenleg a buildelt apk még nem működik, de megpróbálom majd fixálni.
+Jelenleg a buildelt apk (a driveban) még nem működik, de megpróbálom majd fixálni.
 
 <br><br><br><br><br><br><br>
 
