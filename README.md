@@ -23,17 +23,23 @@
 *   A Google AI API válaszideje sajnos meglehetősen lassú; előfordul, hogy akár egy percet is várni kell egy válaszra – ezen sajnos nem tudtam javítani.
 *   A legnagyobb kihívást a Supabase megfelelő beállítása, valamint a megfelelő repülőjárat-kereső API megtalálása jelentette. A legtöbb ilyen API (pl. Kiwi.com) affiliate rendszerhez kötött, amelyhez külön jelentkezni kellett volna.
 
+## Használt AI modellek
+*   **Google Gemini 2.5 Pro Experimental (05.06)**: Jelenleg a legjobb, legújabb modell, és emellett még ingyenes is a Google AI Studio-ban. Egyetlen gond vele, hogy nem struktúrálja olyan jól a válaszait.
+*   **Google Gemini 2.5 Pro (04.17)**: Ez van beépítve az általam használt Cursor AI("VS Code skin made for vibe coding")-ba, és a VS Code-ba (amit akkor kezdtem el használni, amint elfogyott a quotám a Cursor-ban), mint legjobb modell.
+*   **xAI Grok 3**: Jelenleg a kedvenc modellem. A válaszai pontosak, jól struktúráltak, és személyessebb, emberiebb mint a többi AI.
+*   **OpenAI ChatGPT modellek**: Ezeket legfőkébb magyarázásra és szövegfogalmazásra használom, mivel az alap ingyenes tervben nincsen chain of thought modell, így erre nem bíznék kódolást vagy matekot.
+*   **Anthropic Claude Sonnet 3.7 (Thinking)**: Egyedül a copilotban használom, mert a webes felületen nagyon minimális a quota. Nagyon okos és jó válaszokat ad, de tapasztalataim szerint ennek a legkisebb a context window-ja. Elég frusztráló tud lenni, amikor újra kell kezdeni egy beszélgetést a nulláról.
+
+Prompt példákat nem nagyon tudok adni, mert nagyon sok különbőző AI-jal nagyon sok különböző session-ben beszéltam, és nem tudtam volna feljegyezni őket.
+
 ## Utolsó megjegyzések
-*   Nem szerettem volna az apk-t feltölteni a GitHub repoba, mivel nem tudom, mennyire akarják mások extractálni az API kulcsaimat, de itt van egy link egy Google Forms-ra ahol, ha beírod a jelszót 
-(Jelenleg a buildelt apk (a driveban) még nem működik, de megpróbálom majd fixálni.)
-<details>
-  <summary>Kattints a jelszóért</summary>
-  A jelszó a formsban: A5SLd15hAbvNa'"S123"A%
-</details>  
+*   Mivel nem sikerült működő production apk-t buildelni, ezért egy demo-t is feeltöltöttem a  [Google Drive](https://drive.google.com/drive/folders/1Zq4G37Nbn99VMn4eMl3L7cGqmHjNuTub?usp=sharing)-ra. A demoban minden funkció megjelenik, kivéve a regisztráció. Ezt azért nem tudtam demozni, mert már nem volt több kamu email-címem. 
+*  **Problémák a buildelésnél**
+    *   A production build debug-olása során kiderült, hogy az API kulcsokat nem találja a bundler. (Nagyyn sokat szívtam vele, hogy ezt megoldjam, de nem sikerült 🫠)
+    *   Az EAS (Expo Application Services) cloudban való buildelésnél hatalmas sorok vannak. Nem is a buildelés a leghosszabb idő, hanem a queue-ban való várakozás. A buildeléshez 2-3 órát kellett várnom, és a buildelés végén kb. 10 percig tartott. (Kivéve amikor error-t dobott, akkor csak 5 perc 😁)
+    *  Nagyon nehéz volt kiigazodni a buildeléshez szükséges rengeteg config .json fileban. Ráadásul, ebben még az AI sem tudott segíteni, mert vagy elavult információkat szolgáltatott, vagy *straight up* halucinállt.
 
-[Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSfnq0v2g7Xk3j4m5r6x8z9J5Z5G5G5G5G5G5G5G5G/viewform?usp=sf_link). 
-
-Jelenleg a buildelt apk (a driveban) még nem működik, de megpróbálom majd fixálni.
+Jelenleg a buildelt apk (a driveban) nem funkcionális, de nem hiszem, hogy lenne erőforrásom fixálni most így utolsó héten.
 
 <br><br><br><br><br><br><br><br>
 
