@@ -7,7 +7,7 @@
 
 *  A nevem **Gyulavári Vince** (NEPTUN: PIDMKX). A feladat kidolgozását a múlt hétvégén kezdtem el, jelenleg körülbelül 13–15 óra fejlesztési munka van benne. Az alkalmazás főbb funkciói és lényegi részei már működnek, azonban a leadás időpontjában a bejelentkezési rendszer még nem üzemel – ezt igyekszem minél hamarabb javítani. (EDIT: az auth már működik, de a confirmation email a localhost:3000-re redirectál, mivel nincsen valós weboldalam, de ez nem probléma, mert a regisztrációhoz nem szükséges az email konfirmálás. Regisztráció után be lehet lépni a Sign In gombbal.)
 
-## 🛠️ Tech Stack amit használok
+## Tech Stack amit használok
 
 *   **Frontend:** React Native TypeScript-tel, Expo-val és Expo Routerrel
 *   **UI keretrendszer:** React Native Paper
