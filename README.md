@@ -35,7 +35,7 @@
 
 Jelenleg a buildelt apk (a driveban) még nem működik, de megpróbálom majd fixálni.
 
-<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 
 Ehhez a dokumentációhoz itt a prompt:
 Fogalmazd meg ezt szepen:
